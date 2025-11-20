@@ -9,6 +9,7 @@ morgan.token('body', (request) => {
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('dist'))
 app.use(morgan((tokens, req, res) => {
   return [
     tokens.method(req, res),
@@ -48,10 +49,10 @@ let persons = [
     }
 ]
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello to your phonebook!</h1>')
-  morgan('tiny')
-})
+// app.get('/', (request, response) => {
+//   response.send('<h1>Hello to your phonebook!</h1>')
+//   morgan('tiny')
+// })
 
 app.get('/info', (request, response) => {
   response.send('<p>Phonebook has info for ' 
@@ -109,7 +110,7 @@ app.post('/api/persons', (request, response) => {
   response.json(person)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
