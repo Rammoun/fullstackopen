@@ -113,7 +113,7 @@ const App = () => {
         })
         .catch(error => {
           console.log('Failed to add person')
-          setNotificationMessage(`Failed to add ${newName}`)
+          setNotificationMessage(error.response.data.error)
           setNotificationClassName('error')
           setTimeout(() => {
             setNotificationMessage(null)
