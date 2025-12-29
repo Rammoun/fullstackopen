@@ -1,0 +1,33 @@
+.error {
+  color: red;
+  background: rgba(255, 158, 158, 0.3);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.success{
+  color: green;
+  background: rgba(138, 247, 138, 0.3);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.blog{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.remBtn{
+  background-color: blue;
+  color: white;
+}
+
+.blog .single {
+  display: none;
+}
