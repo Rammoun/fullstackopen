@@ -33,15 +33,9 @@ const AddEntryForm = ({ modalOpen, onClose, patientId, setPatient, diagnoses }: 
   const [specialist, setSpecialist] = useState("");
   const [diagnosisCodes, setDiagnosisCodes] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
-
-  // HealthCheck State
   const [healthCheckRating, setHealthCheckRating] = useState(HealthCheckRating.Healthy);
-
-  // Hospital State
   const [dischargeDate, setDischargeDate] = useState("");
   const [dischargeCriteria, setDischargeCriteria] = useState("");
-
-  // Occupational State
   const [employerName, setEmployerName] = useState("");
   const [sickLeaveStart, setSickLeaveStart] = useState("");
   const [sickLeaveEnd, setSickLeaveEnd] = useState("");
@@ -58,7 +52,6 @@ const AddEntryForm = ({ modalOpen, onClose, patientId, setPatient, diagnoses }: 
     setError(null);
 
     try {
-      // 1. Create Base Object
       const baseEntry = {
         description,
         date,
@@ -68,7 +61,6 @@ const AddEntryForm = ({ modalOpen, onClose, patientId, setPatient, diagnoses }: 
 
       let newEntry: any;
 
-      // 2. Construct specific entry based on type
       switch (type) {
         case "HealthCheck":
           newEntry = {
@@ -105,10 +97,8 @@ const AddEntryForm = ({ modalOpen, onClose, patientId, setPatient, diagnoses }: 
           throw new Error("Invalid entry type");
       }
 
-      // 3. Send to Backend
       const addedEntry = await patientService.createEntry(patientId, newEntry);
       
-      // 4. Update Frontend State
       setPatient((prev) => {
         if (!prev) return null;
         return {
@@ -117,9 +107,7 @@ const AddEntryForm = ({ modalOpen, onClose, patientId, setPatient, diagnoses }: 
         };
       });
 
-      // 5. Cleanup
       onClose();
-      // Optional: Reset form fields here if you want
       setDescription("");
       setDate("");
       setSpecialist("");

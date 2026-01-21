@@ -34,18 +34,14 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
       setModalOpen(false);
     } catch (e: unknown) {
       if (axios.isAxiosError(e)) {
-        // Case 1: Server sends a simple string message
         if (e?.response?.data && typeof e?.response?.data === "string") {
           const message = e.response.data.replace('Something went wrong. Error: ', '');
           console.error(message);
           setError(message);
         } 
-        // Case 2: Server sends a Zod Validation Array (The "Better Error")
         else if (e?.response?.data && typeof e?.response?.data === "object") {
-             // @ts-ignore
              const errorData = e.response.data.error;
              if (Array.isArray(errorData)) {
-                 // Join all validation messages (e.g., "Date is invalid", "SSN is missing")
                  const messages = errorData.map((err: any) => err.message).join(", ");
                  setError(messages);
              } else {

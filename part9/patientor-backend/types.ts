@@ -10,7 +10,6 @@ export enum Gender {
   Other = 'other',
 }
 
-// 1. Define Entry Types
 export interface BaseEntry {
   id: string;
   description: string;

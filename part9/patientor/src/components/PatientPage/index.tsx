@@ -50,7 +50,6 @@ const PatientPage = () => {
         patientId={patient.id}
         setPatient={setPatient}
         diagnoses={diagnoses}
-        // setDiagnoses={setDiagnoses}
       />
 
       <h3>entries</h3>
