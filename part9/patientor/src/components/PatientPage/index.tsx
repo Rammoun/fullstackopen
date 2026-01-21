@@ -47,9 +47,10 @@ const PatientPage = () => {
       <AddEntryForm 
         modalOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 
-        onOpen={() => setModalOpen(true)}
         patientId={patient.id}
         setPatient={setPatient}
+        diagnoses={diagnoses}
+        // setDiagnoses={setDiagnoses}
       />
 
       <h3>entries</h3>

@@ -7,8 +7,7 @@ export const NewPatientSchema = z.object({
   dateOfBirth: z.string().date(),
   ssn: z.string(),
   gender: z.nativeEnum(Gender),
-  occupation: z.string(),
-  // entries: z.array(z.any()).optional()
+  occupation: z.string()
 });
 
 export const NewEntrySchema = z.discriminatedUnion("type", [
